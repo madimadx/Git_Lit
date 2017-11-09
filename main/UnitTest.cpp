@@ -1,10 +1,9 @@
-/*#include "Display.h"
 #include "UnitTest.h"
 #include <Adafruit_NeoPixel.h>
 
 
-UnitTest::UnitTest){
-  
+UnitTest::UnitTest(){
+  Serial.begin(9600);
 }
 
 void UnitTest::testSetGridColor(){
@@ -18,7 +17,8 @@ void UnitTest::testSetGridColor(){
       if (strip.getPixelColor(i) != testColor)
         countWrong++;
     }
-    assertEqual(countWrong, 0);
+    if(countWrong == 0)
+      Serial.print("All tests passed");
+    else
+      Serial.print("Failed");
 }
-
-*/
