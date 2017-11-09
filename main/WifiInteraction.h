@@ -11,11 +11,11 @@ class WifiInteraction
       WifiInteraction();
       void resetCustomDisplay();
       void flipDisplay();
+      uint32_t customGrid[ROWS][COLS];
   private:
       int diffDisplays[DIFF];
       int currDisplay;
       Display disp;
-      uint32_t customGrid[ROWS][COLS];
       uint32_t color1, color2;
       int cycleTime;
       uint32_t emptyPixel;
