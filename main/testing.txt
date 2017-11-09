@@ -1,0 +1,4 @@
+To test our functionality and run the unit tests, run main with a UnitTest object and call the function "RunAllUnitTests". This function will automatically run through all the tests and print to the Serial Module which tests failed (if any).
+
+The functions we are testing, ensures that the designs creating are displaying as we intended. Because our project revolves around our LED display, it is critical that the images displayed are correct. We also tested the wifi integration to ensure that we are able to switch between the displays. Without this functionality, the LED display is very one dimentional and not super interesting.
+
