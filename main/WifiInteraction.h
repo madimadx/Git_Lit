@@ -1,4 +1,4 @@
-#include <Adafruit_NeoPixel.h>
+/*#include <Adafruit_NeoPixel.h>
 #include "Display.h"
 
 #define ROWS 5
@@ -21,4 +21,4 @@ class WifiInteraction
       bool isCustomEmpty;  
       //Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, 14, NEO_RGB + NEO_KHZ400);;
 };
-
+*/

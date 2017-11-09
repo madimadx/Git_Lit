@@ -1,26 +1,27 @@
 
 #include "LightSensor.h"
-#include "Display.h"
 
 // put your setup code here, to run once:
 //pinMode(BUILTIN_LED, OUTPUT);
 //thing.add_wifi(SSID, SSID_PASSWORD);
 
-Display * dispLight = new Display();
+LightSensor::LightSensor() {
+  strip = dispLight.getStrip();
+}
 
-unsigned int readSensor() {
+unsigned int LightSensor::readSensor() {
   return (unsigned int) analogRead(A0);
   //return out;
 }
 
-int calcIntensity () {
+int LightSensor::calcIntensity () {
   unsigned int sensorRead = readSensor();
   return (uint8_t) sensorRead / 1024 * 100;
 }
 
-void setIntensity () {
-  (dispLight->strip).setBrightness(calcIntensity());
-  (dispLight->strip).show();
+void LightSensor::setIntensity () {
+  strip.setBrightness(calcIntensity());
+  strip.show();
 }
 
 

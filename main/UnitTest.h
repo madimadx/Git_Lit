@@ -1,4 +1,4 @@
-#include "Display.h"
+/*#include "Display.h"
 #include "WifiInteraction.h"
 #include <ArduinoUnit.h>
 
@@ -6,5 +6,5 @@ class UnitTest
 {
   public:
       UnitTest();
-  private:
-};
+      void testSetGridColor();
+};*/

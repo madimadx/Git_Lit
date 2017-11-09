@@ -111,6 +111,10 @@ void Display::cycleRainbow(uint8_t wait) {
   }
 }
 
+Adafruit_NeoPixel Display::getStrip() {
+  return strip;
+}
+
 // Input a value 0 to 255 to get a color value.
 // The colours are a transition r - g - b - back to r.
 uint32_t Display::Wheel(byte WheelPos) {

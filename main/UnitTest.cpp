@@ -1,19 +1,24 @@
-#include "Display.h"
+/*#include "Display.h"
 #include "UnitTest.h"
+#include <Adafruit_NeoPixel.h>
 
 
+UnitTest::UnitTest){
+  
+}
 
-void testSetGridColor(){
+void UnitTest::testSetGridColor(){
     Display dispT;
-    uint32_t testColor = (dispT.strip).Color(255, 0, 255);
-    (dispT)->setGridColor(testColor); 
+    Adafruit_NeoPixel strip = dispT.getStrip();
+    uint32_t testColor = strip.Color(255, 0, 255);
+    dispT.setGridColor(testColor); 
     
     int countWrong = 0;
-    for(uint16_t i=0; i< (dispT.strip).numPixels(); i++) {
-      if ((dispT.strip).getPixelColor(i) != testColor)
+    for(uint16_t i=0; i< strip.numPixels(); i++) {
+      if (strip.getPixelColor(i) != testColor)
         countWrong++;
     }
     assertEqual(countWrong, 0);
 }
 
-
+*/

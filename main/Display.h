@@ -12,8 +12,10 @@ class Display
       void rgbLineCycle();
       void gradient(uint32_t, uint32_t);
       void cycleRainbow(uint8_t);
-       Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, 14, NEO_RGB + NEO_KHZ400);
+      Adafruit_NeoPixel getStrip();
+
   private:
       uint32_t Wheel(byte);
+      Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, 14, NEO_RGB + NEO_KHZ400);
      
 };

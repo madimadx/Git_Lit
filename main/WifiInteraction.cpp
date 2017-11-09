@@ -1,4 +1,4 @@
-//#include <ESP8266WiFi.h>
+/*//#include <ESP8266WiFi.h>
 //#include <ThingerESP8266.h>
 
 #include "WifiInteraction.h"
