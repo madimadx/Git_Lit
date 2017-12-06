@@ -26,6 +26,8 @@ void Display::setGridColor(uint32_t c) {
 }
 
 void Display::cycleColors(uint8_t wait) {
+
+  
   uint16_t i, j;
 
   for(j=0; j<256; j++) {
@@ -41,19 +43,19 @@ void Display::rgbLineCycle() {
   for(uint16_t i=0; i<strip.numPixels(); i++) {
     strip.setPixelColor(i, strip.Color(255,0,0));
     strip.show();
-    delay(250);
+    delay(100);
     Serial.println("red");
   }
   for(uint16_t i=0; i<strip.numPixels(); i++) {
     strip.setPixelColor(i, strip.Color(0,255,0));
     strip.show();
-    delay(250);
+    delay(100);
     Serial.println("green");
   }
   for(uint16_t i=0; i<strip.numPixels(); i++) {
     strip.setPixelColor(i, strip.Color(0,0,255));
     strip.show();
-    delay(250);
+    delay(100);
     Serial.println("blue");
   }
 }
@@ -97,17 +99,35 @@ void Display::gradient(uint32_t c1, uint32_t c2) {
 void Display::cycleRainbow(uint8_t wait) {
   uint16_t i, j, k;
 
-  for(j=0; j<256; j++) { // 5 cycles of all colors on wheel
+  for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
     for(i=0; i< ROWS; i++) {
       for(k=0; k< COLS; k++) {
         strip.setPixelColor(k+(i*COLS), Wheel(((k * 256 / COLS) + j) & 255));
-        Serial.print(Wheel(((k * 256 / COLS) + j) & 255));
-        Serial.print(" ");
+        //Serial.print(Wheel(((k * 256 / COLS) + j) & 255));
+        //Serial.print(" ");
       }
-      Serial.println(" ");
+      //Serial.println(" ");
+
     }
-    strip.show();
-    delay(wait);
+   strip.show();
+   delay(wait);
+  }
+}
+/********************************************* Sketchy **************************************************/
+void Display::flashColors(uint32_t c1, uint32_t c2, uint8_t wait) {
+  for (int j=0; j<50; j++) { 
+    for (int q=0; q < 3; q++) {
+      for (uint16_t i=0; i < strip.numPixels(); i=i+3) {
+        strip.setPixelColor(i+q, c1);    //turn every third pixel on
+      }
+      strip.show();
+
+      delay(wait);
+
+      for (uint16_t i=0; i < strip.numPixels(); i=i+3) {
+        strip.setPixelColor(i+q, c2);        //turn every third pixel off
+      }
+    }
   }
 }
 
