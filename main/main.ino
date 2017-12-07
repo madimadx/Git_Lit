@@ -16,8 +16,8 @@
 Adafruit_NeoPixel LEDs = Adafruit_NeoPixel(60, 14, NEO_RGB + NEO_KHZ400);
 Display d;
   
-const char* ssid = "Drop It Like It's Hotspot";
-const char* password = "snoopdodoubleg";
+const char* ssid = "Connor's iPhone";
+const char* password = "aaaaaaaa";
 
 const char* host = "people.cs.clemson.edu";
 const int httpsPort = 443;
@@ -57,7 +57,7 @@ void loop() {
   d.cycleColors(20);
   d.cycleColors(10);
   d.cycleColors(10);
-  d.gradient(LEDs.Color(0,255*brightness/255,0), LEDs.Color(0,0,255*brightness/255));
+  d.gradient(LEDs.Color(255*brightness/255,255*brightness/255,0), LEDs.Color(0,0,255*brightness/255));
   delay(5000);
   d.setGridColor(LEDs.Color(255*brightness/255,0,0));
   delay(5000);
