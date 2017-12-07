@@ -80,10 +80,7 @@ void Display::gradient(uint32_t c1, uint32_t c2) {
       g3 = (g1 - g1/(2*(COLS-1))*i - g1/(2*(ROWS-1))*j) + (g2/(2*(COLS-1))*i + g2/(2*(ROWS-1))*j);
       b3 = (b1 - b1/(2*(COLS-1))*i - b1/(2*(ROWS-1))*j) + (b2/(2*(COLS-1))*i + b2/(2*(ROWS-1))*j);
       strip.setPixelColor(i+(j*COLS), strip.Color(r3,g3,b3));
-      Serial.print(strip.Color(r3,g3,b3));
-      Serial.print(" ");
     }
-    Serial.println(" ");
    strip.show();
   }
 }

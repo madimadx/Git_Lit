@@ -47,8 +47,7 @@ void setup() {
 }
 
 void loop() {
-/*  sensorValue = analogRead(sensorPin); // read the value from the sensor
-  Serial.println(sensorValue); //prints the values coming from the sensor on the screen
+  sensorValue = analogRead(sensorPin); // read the value from the sensor
   int brightness = sensorValue/4;
   if(brightness)
     brightness--;
@@ -58,7 +57,6 @@ void loop() {
   d.cycleColors(20);
   d.cycleColors(10);
   d.cycleColors(10);
-  //d.flashColors(LEDs.Color(100,255,0), LEDs.Color(0, 255, 255), 200); // needs work
   d.gradient(LEDs.Color(0,255*brightness/255,0), LEDs.Color(0,0,255*brightness/255));
   delay(5000);
   d.setGridColor(LEDs.Color(255*brightness/255,0,0));
@@ -68,7 +66,6 @@ void loop() {
   d.setGridColor(LEDs.Color(0,0,255*brightness/255));
   delay(5000);
   d.cycleRainbow(10);
-*/
   if(String custom = httpGet()) {
     d.displayCustom(custom);
     delay (5000);
