@@ -64,14 +64,3 @@ void WifiInteraction::resetCustomDisplay() {
   }
   isCustomEmpty = true;
 }
-/*
-can we add this to the display class?????
-void WifiInteraction::displayCustom(uint32_t custom[ROWS][COLS]) {
-  for (int j = 0; j < ROWS; j++) {
-    for (int i = 0; i < COLS; i++) {
-      strip.setPixelColor (i+(j*COLS), custom[j][i]);
-    }
-  }
-  grid.show();
-}
-*/

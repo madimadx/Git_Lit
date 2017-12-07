@@ -26,8 +26,6 @@ void Display::setGridColor(uint32_t c) {
 }
 
 void Display::cycleColors(uint8_t wait) {
-
-  
   uint16_t i, j;
 
   for(j=0; j<256; j++) {
@@ -41,33 +39,28 @@ void Display::cycleColors(uint8_t wait) {
 
 void Display::rgbLineCycle() {
   for(uint16_t i=0; i<strip.numPixels(); i++) {
-    strip.setPixelColor(i, strip.Color(255,0,0));
+    strip.setPixelColor(i, strip.Color(255*brightness/255,0,0));
     strip.show();
     delay(100);
-    Serial.println("red");
   }
   for(uint16_t i=0; i<strip.numPixels(); i++) {
-    strip.setPixelColor(i, strip.Color(0,255,0));
+    strip.setPixelColor(i, strip.Color(0,255*brightness/255,0));
     strip.show();
     delay(100);
-    Serial.println("green");
   }
   for(uint16_t i=0; i<strip.numPixels(); i++) {
-    strip.setPixelColor(i, strip.Color(0,0,255));
+    strip.setPixelColor(i, strip.Color(0,0,255*brightness/255));
     strip.show();
     delay(100);
-    Serial.println("blue");
   }
 }
-/*
-void Display::displayCustom(uint32_t custom[ROWS][COLS]) {
-  for (int j = 0; j < ROWS; j++) {
-    for (int i = 0; i < COLS; i++) {
-      strip.setPixelColor (i+(j*COLS), custom[j][i]);
-    }
+
+void Display::displayCustom(String str) {
+  for (int i = 0; i <strip.numPixels(); i++) {
+    strip.setPixelColor(i, hexTo32bitGRB(str.substring(i*7, 7+(i*7))));
   }
-  grid.show();
-}*/
+  strip.show();
+}
 
 void Display::gradient(uint32_t c1, uint32_t c2) {
   uint16_t i, j, k;
@@ -103,11 +96,7 @@ void Display::cycleRainbow(uint8_t wait) {
     for(i=0; i< ROWS; i++) {
       for(k=0; k< COLS; k++) {
         strip.setPixelColor(k+(i*COLS), Wheel(((k * 256 / COLS) + j) & 255));
-        //Serial.print(Wheel(((k * 256 / COLS) + j) & 255));
-        //Serial.print(" ");
       }
-      //Serial.println(" ");
-
     }
    strip.show();
    delay(wait);
@@ -148,4 +137,18 @@ uint32_t Display::Wheel(byte WheelPos) {
   }
   WheelPos -= 170;
   return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
+}
+
+uint32_t Display::hexTo32bitGRB(String hex) {
+   //convert it to 32-bit int (RGB)
+   hex = hex.substring(1);
+   uint32_t colorRGB = strtol(&hex[0], NULL, 16);
+   //isolate R G B values
+   uint8_t r = ((uint8_t) (colorRGB >> 16) & 0xFF);
+   uint8_t g = ((uint8_t) (colorRGB >> 8) & 0xFF);
+   uint8_t b = ((uint8_t) colorRGB & 0xFF);
+
+   //generate 32-bit GRB
+   uint32_t colorGRB = ((uint32_t)g << 16) | ((uint32_t)r <<  8) | b;
+   return colorGRB;
 }
